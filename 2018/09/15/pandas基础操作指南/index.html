@@ -1,603 +1,1050 @@
-<!doctype html>
+<!DOCTYPE HTML>
+<html lang="">
 
 
-
-  
-
-
-<html class="theme-next muse use-motion">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="skills," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
-
-
-
-
-
-
-<meta name="description" content="pandas的常用数据操作，导入导出清洗分析计算，bryan大神整理">
-<meta name="keywords" content="skills">
-<meta property="og:type" content="article">
-<meta property="og:title" content="pandas基础操作指南">
-<meta property="og:url" content="http://yoursite.com/2018/09/15/pandas基础操作指南/index.html">
-<meta property="og:site_name" content="大大世界小小白">
-<meta property="og:description" content="pandas的常用数据操作，导入导出清洗分析计算，bryan大神整理">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-15T07:37:09.763Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="pandas基础操作指南">
-<meta name="twitter:description" content="pandas的常用数据操作，导入导出清洗分析计算，bryan大神整理">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    }
-  };
-</script>
-
-
-
-
-  <link rel="canonical" href="http://yoursite.com/2018/09/15/pandas基础操作指南/"/>
-
-
-  <title> pandas基础操作指南 | 大大世界小小白 </title>
-</head>
-
-<body itemscope itemtype="//schema.org/WebPage" lang="">
-
-  
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">大大世界小小白</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle"></p>
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
+    <meta charset="utf-8">
+    <meta name="keywords" content="pandas基础操作指南, 大大世界小小白">
+    <meta name="description" content="pandas的常用数据操作，导入导出清洗分析计算，bryan大神整理
+import pandas as pd
+import numpy as np
+import pymysql
+
+说明：df 任意的Pandas DataFrame对象s 任">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>pandas基础操作指南 | 大大世界小小白</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">大大世界小小白</span>
+                </a>
+            </div>
             
-            Home
-          </a>
-        </li>
-      
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>Index</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>Tags</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>Categories</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>Archives</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>About</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>Friends</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="Search"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-            Archives
-          </a>
-        </li>
-      
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+        <div class="logo-name">大大世界小小白</div>
+        <div class="logo-desc">
             
-            Tags
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-schedule">
-          <a href="/schedule" rel="section">
+            Never really desperate, only the lost of the soul.
             
-            Schedule
-          </a>
-        </li>
-      
+        </div>
+    </div>
 
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
     
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
+    <ul class="menu-list mobile-menu-list">
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                pandas基础操作指南
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2018-09-15T15:05:03+08:00" content="2018-09-15">
-              2018-09-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/pandas/" itemprop="url" rel="index">
-                    <span itemprop="name">pandas</span>
-                  </a>
-                </span>
-
+        <li>
+            <a href="/" class="waves-effect waves-light">
                 
+                <i class="fa fa-fw fa-home"></i>
                 
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>pandas的常用数据操作，导入导出清洗分析计算，bryan大神整理<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">import pymysql</span><br></pre></td></tr></table></figure></p>
-<p>说明：<br>df 任意的Pandas DataFrame对象<br>s 任意的Pandas Series对象，表示一列</p>
-<h1 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">filename=&apos;D:/IJCAI/file.csv&apos;</span><br><span class="line">pd.read_csv(filename,sep=&apos; &apos;)#从CSV文件导入数据</span><br><span class="line">df=pd.read_csv(filename,sep=&apos; &apos;,header=None) #没有头的文件</span><br><span class="line">df.columns =[&apos;f1&apos;,&apos;f2&apos;]</span><br><span class="line">pd.read_table(filename)#从限定分隔符的文本文件导入数据</span><br><span class="line">pd.read_excel(filename)#从Excel文件导入数据</span><br><span class="line">query=&apos;select user_id,item_id from data&apos;</span><br><span class="line">db = pymysql.connect(host=&apos;host_name&apos;, port=3600, user=&apos;user_name&apos;, passwd=&apos;123456&apos;, db=&apos;db_name&apos;,charset=&quot;utf8&quot;)</span><br><span class="line">pd.read_sql(query, db)#从SQL表/库导入数据</span><br><span class="line">pd.read_json(json_string)#从JSON格式的字符串导入数据</span><br><span class="line">pd.read_html(url)#解析URL、字符串或者HTML文件，抽取其中的tables表格</span><br><span class="line">pd.read_clipboard()#从你的粘贴板获取内容，并传给read_table()</span><br></pre></td></tr></table></figure>
-<h1 id="构造数据"><a href="#构造数据" class="headerlink" title="构造数据"></a>构造数据</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df=pd.DataFrame([[1,2,3],[4,5,6]],columns=[&apos;f1&apos;,&apos;f2&apos;,&apos;f3&apos;])</span><br><span class="line">df=pd.DataFrame(&#123;&apos;user_id&apos;:[1,2,3],&apos;item_id&apos;:[12,34,56]&#125;) # 按列构造</span><br><span class="line">df=pd.DataFrame([&#123;&apos;user_id&apos;:1,&apos;item_id&apos;:2&#125;,&#123;&apos;user_id&apos;:&apos;3&apos;&#125;,&#123;&apos;item_id&apos;:4&#125;]) #按行构造</span><br></pre></td></tr></table></figure>
-<h1 id="导出数据"><a href="#导出数据" class="headerlink" title="导出数据"></a>导出数据</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df.to_csv(filename,index=False,sep=&apos;,&apos;)#导出数据到CSV文件</span><br><span class="line">df.to_excel(filename) #导出数据到Excel文件</span><br><span class="line">df.to_sql(table_name, db) #导出数据到SQL表</span><br><span class="line">df.to_json(filename) #以Json格式导出数据到文本文件</span><br></pre></td></tr></table></figure>
-<h1 id="查看数据"><a href="#查看数据" class="headerlink" title="查看数据"></a>查看数据</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">df.head(n)#查看DataFrame对象的前n行</span><br><span class="line">df.tail(n)#查看DataFrame对象的最后n行</span><br><span class="line">df.shape()#查看行数和列数</span><br><span class="line">df.info()#查看索引、数据类型和内存信息</span><br><span class="line">df.describe()#查看数值型列的汇总统计</span><br><span class="line">df[&apos;user_id&apos;].value_counts(dropna=False) #查看Series对象的唯一值和计数</span><br></pre></td></tr></table></figure>
-<h1 id="数据选取"><a href="#数据选取" class="headerlink" title="数据选取"></a>数据选取</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">s=df[&apos;user_id&apos;]#根据列名，并以Series的形式返回列</span><br><span class="line">df[[&apos;user_id&apos;, &apos;item_id&apos;]]#以DataFrame形式返回多列</span><br><span class="line">s.iloc[0]#按位置选取数据</span><br><span class="line">s.loc[&apos;index_one&apos;]#按索引选取数据</span><br><span class="line">df.iloc[0,:]#返回第一行</span><br><span class="line">df.iloc[0,0]#返回第一列的第一个元素</span><br><span class="line">df.sample(frac=0.5)  #采样</span><br><span class="line">df.sample(n=len(df))</span><br></pre></td></tr></table></figure>
-<h1 id="数据整理"><a href="#数据整理" class="headerlink" title="数据整理"></a>数据整理</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">pd.isnull()#检查DataFrame对象中的空值，并返回一个Boolean数组</span><br><span class="line">pd.notnull()#检查DataFrame对象中的非空值，并返回一个Boolean数组</span><br><span class="line">df.dropna(axis=0)#删除所有包含空值的行</span><br><span class="line">df.dropna(axis=1)#删除所有包含空值的列</span><br><span class="line">df.dropna(axis=1,thresh=n)#删除所有小于n个非空值的行</span><br><span class="line">df.fillna(x)#用x替换DataFrame对象中所有的空值</span><br><span class="line">df.fillna(df.mode().iloc[0]) #众值填充</span><br><span class="line">df.fillna(df.median()) #中位数填充</span><br><span class="line">df[&quot;user_age&quot;][df.age.isnull()]=&quot;0&quot;  #对某一列填充</span><br><span class="line">s.astype(float)#将Series中的数据类型更改为float类型</span><br><span class="line">df[&quot;user_age&quot;]=df[&quot;user_age&quot;].astype(&apos;int&apos;) #更改某列类型</span><br><span class="line">s.replace(1,&apos;one&apos;)#用‘one’代替所有等于1的值</span><br><span class="line">s.replace([1,3],[&apos;one&apos;,&apos;three&apos;])#用&apos;one&apos;代替1，用&apos;three&apos;代替3</span><br><span class="line">df.columns = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;]#重命名列名</span><br><span class="line">df.rename(columns=lambda x: x + 1)#批量更改列名</span><br><span class="line">df.rename(index=lambda x: x + 1)#批量重命名索引</span><br><span class="line">df.rename(columns=&#123;&apos;old_name&apos;: &apos;new_ name&apos;&#125;)#选择性更改列名</span><br><span class="line">df.set_index(&apos;column_one&apos;)#更改索引列</span><br><span class="line">df.reset_index(drop=True) #重置索引，主要用在各种操作之后，索引会被打乱</span><br></pre></td></tr></table></figure>
-<h1 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h1><p>Filter 、Sort 和 GroupBy<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">df[df[col] &gt; 0.5]#选择col列的值大于0.5的行</span><br><span class="line">df.sort_values(by=&apos;col1&apos;,ascending=True)#按照列col1排序数据，默认升序排列</span><br><span class="line">df.sort_values([col1,col2], ascending=[True,False])#先按列col1升序排列，后按col2降序排列数据</span><br><span class="line">df.groupby(col)#返回一个按列col进行分组的Groupby对象</span><br><span class="line">df.groupby([col1,col2])#返回一个按多列进行分组的Groupby对象</span><br><span class="line">df.groupby(col1)[col2].apply(np.mean)#返回按列col1进行分组后，列col2的均值</span><br><span class="line">df.pivot_table(index=col1, values=[col2,col3], aggfunc=max)#创建一个按列col1进行分组，并计算col2和col3的最大值的数据透视表</span><br><span class="line">df.groupby(col1).agg(np.mean)#返回按列col1分组的所有列的均值</span><br><span class="line">df.groupby(&apos;user_id&apos;,as_index=False)[&apos;is_trade&apos;].agg(&#123;&apos;buy&apos;:&apos;sum&apos;,&apos;click&apos;:&apos;count&apos;,&apos;cvr&apos;:&apos;mean&apos;&#125;) #生成新的df，列是user_id,buy,click,cvr</span><br><span class="line"></span><br><span class="line">for index,row in df.iterrows():</span><br><span class="line">    # index 是行号</span><br><span class="line">    # row是一行</span><br><span class="line">    print(index,row[&apos;user_id&apos;])</span><br><span class="line">    break</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">for key,df in df.groupby(&apos;user_gender_id&apos;):</span><br><span class="line">    # key 就是user_id</span><br><span class="line">    # df就是分组后的dataframe</span><br><span class="line">    print(key,len(df))</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">df[&apos;user_id&apos;].apply(np.mean)#对DataFrame中的每一列应用函数np.mean</span><br><span class="line">df.apply(np.max,axis=1)#对DataFrame中的每一行应用函数np.max</span><br></pre></td></tr></table></figure></p>
-<h1 id="分组排序"><a href="#分组排序" class="headerlink" title="分组排序"></a>分组排序</h1><p>比如对shop分组，对组里面的item转化率分别排序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(&apos;shop_id&apos;,as_index=False)[&apos;item_cvr&apos;].rank(ascending=False, method=&apos;dense&apos;)</span><br></pre></td></tr></table></figure></p>
-<h1 id="数据合并"><a href="#数据合并" class="headerlink" title="数据合并"></a>数据合并</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df1.append(df2)#将df2中的行添加到df1的尾部</span><br><span class="line">pd.concat([df1, df2],axis=1)#按列合并</span><br><span class="line">pd.concat([df1,df2],axis=0)#按行合并</span><br><span class="line">pd.merge(df1,df2,on=&apos;user_id&apos;,how=&apos;inner&apos;)#对df1的列和df2的列执行SQL形式的join</span><br></pre></td></tr></table></figure>
-<h1 id="差集计算"><a href="#差集计算" class="headerlink" title="差集计算"></a>差集计算</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df1=pd.DataFrame(&#123;&apos;user_id&apos;:[1,2,3,4],&apos;item_id&apos;:[11,22,33,44]&#125;)</span><br><span class="line">df2=pd.DataFrame(&#123;&apos;user_id&apos;:[1,2]&#125;)</span><br><span class="line">df2[&apos;flag&apos;]=1</span><br><span class="line">df3=pd.merge(df1,df2,on=&apos;user_id&apos;,how=&apos;left&apos;)</span><br><span class="line">df3=df3[df3.flag.isnull()].drop(&apos;flag&apos;,axis=1)</span><br></pre></td></tr></table></figure>
-<h1 id="数据统计"><a href="#数据统计" class="headerlink" title="数据统计"></a>数据统计</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">df.mean()#返回所有列的均值</span><br><span class="line">df.corr()#返回所有列与列之间的相关系数</span><br><span class="line">df.item_star_level.corr(df.is_trade)</span><br><span class="line">df.count()#返回每一列中的非空值的个数</span><br><span class="line">df.max()#返回每一列的最大值</span><br><span class="line">df.min()#返回每一列的最小值</span><br><span class="line">df.median()#返回每一列的中位数</span><br><span class="line">df.std()#返回每一列的标准差</span><br><span class="line">df.dtypes #查看数据类型</span><br><span class="line">df[&quot;user_age_level&quot;].hist() #查看变量分布</span><br><span class="line">df.isnull().sum()  #查看每一列缺失值情况</span><br><span class="line">df[&apos;n_null&apos;] = df.isnull().sum(axis=1) #查看每一行缺失值情况</span><br><span class="line">df[&quot;user_age_level&quot;].value_counts() #查看这一列的值统计</span><br><span class="line">df[&apos;user_age_level&apos;].unique() #查看数据取值</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/skills/" rel="tag">#skills</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/08/22/jupyter快捷键/" rel="next" title="jupyter 快捷键">
-                <i class="fa fa-chevron-left"></i> jupyter 快捷键
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/06/test/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-  </div>
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="baifengbai" />
-          <p class="site-author-name" itemprop="name">baifengbai</p>
-          <p class="site-description motion-element" itemprop="description"></p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">5</span>
-              <span class="site-state-item-name">posts</span>
+                Index
             </a>
-          </div>
-
-          
-            <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">categories</span>
-              
-            </div>
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">tags</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
+        </li>
         
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                Tags
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                Categories
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                Archives
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                About
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                Friends
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
 
-        <div class="links-of-author motion-element">
-          
         </div>
 
         
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
         
+    </nav>
 
-        
-        
+</header>
 
-      </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#导入数据"><span class="nav-number">1.</span> <span class="nav-text">导入数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构造数据"><span class="nav-number">2.</span> <span class="nav-text">构造数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#导出数据"><span class="nav-number">3.</span> <span class="nav-text">导出数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看数据"><span class="nav-number">4.</span> <span class="nav-text">查看数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据选取"><span class="nav-number">5.</span> <span class="nav-text">数据选取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据整理"><span class="nav-number">6.</span> <span class="nav-text">数据整理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据处理"><span class="nav-number">7.</span> <span class="nav-text">数据处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分组排序"><span class="nav-number">8.</span> <span class="nav-text">分组排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据合并"><span class="nav-number">9.</span> <span class="nav-text">数据合并</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#差集计算"><span class="nav-number">10.</span> <span class="nav-text">差集计算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据统计"><span class="nav-number">11.</span> <span class="nav-text">数据统计</span></a></li></ol></div>
-            
-          </div>
-        </section>
-      
 
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        pandas基础操作指南
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">baifengbai</span>
 </div>
 
-<div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
-</div>
 
-<div class="theme-info">
-  Theme -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
 
-        
+<main class="post-container content">
 
-        
-      </div>
-    </footer>
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/skills/" target="_blank">
+                                <span class="chip bg-color">skills</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/pandas/" class="post-category" target="_blank">
+                                pandas
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2018-09-15
+                </div>
+
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>pandas的常用数据操作，导入导出清洗分析计算，bryan大神整理<br><a id="more"></a></p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">import</span> pymysql
+</code></pre>
+<p>说明：<br>df 任意的Pandas DataFrame对象<br>s 任意的Pandas Series对象，表示一列</p>
+<h1 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h1><pre class=" language-python"><code class="language-python">filename<span class="token operator">=</span><span class="token string">'D:/IJCAI/file.csv'</span>
+pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span>filename<span class="token punctuation">,</span>sep<span class="token operator">=</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#从CSV文件导入数据</span>
+df<span class="token operator">=</span>pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span>filename<span class="token punctuation">,</span>sep<span class="token operator">=</span><span class="token string">' '</span><span class="token punctuation">,</span>header<span class="token operator">=</span>None<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#没有头的文件</span>
+df<span class="token punctuation">.</span>columns <span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'f1'</span><span class="token punctuation">,</span><span class="token string">'f2'</span><span class="token punctuation">]</span>
+pd<span class="token punctuation">.</span>read_table<span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#从限定分隔符的文本文件导入数据</span>
+pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#从Excel文件导入数据</span>
+query<span class="token operator">=</span><span class="token string">'select user_id,item_id from data'</span>
+db <span class="token operator">=</span> pymysql<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'host_name'</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">3600</span><span class="token punctuation">,</span> user<span class="token operator">=</span><span class="token string">'user_name'</span><span class="token punctuation">,</span> passwd<span class="token operator">=</span><span class="token string">'123456'</span><span class="token punctuation">,</span> db<span class="token operator">=</span><span class="token string">'db_name'</span><span class="token punctuation">,</span>charset<span class="token operator">=</span><span class="token string">"utf8"</span><span class="token punctuation">)</span>
+pd<span class="token punctuation">.</span>read_sql<span class="token punctuation">(</span>query<span class="token punctuation">,</span> db<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#从SQL表/库导入数据</span>
+pd<span class="token punctuation">.</span>read_json<span class="token punctuation">(</span>json_string<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#从JSON格式的字符串导入数据</span>
+pd<span class="token punctuation">.</span>read_html<span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#解析URL、字符串或者HTML文件，抽取其中的tables表格</span>
+pd<span class="token punctuation">.</span>read_clipboard<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#从你的粘贴板获取内容，并传给read_table()</span>
+</code></pre>
+<h1 id="构造数据"><a href="#构造数据" class="headerlink" title="构造数据"></a>构造数据</h1><pre class=" language-python"><code class="language-python">df<span class="token operator">=</span>pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>columns<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'f1'</span><span class="token punctuation">,</span><span class="token string">'f2'</span><span class="token punctuation">,</span><span class="token string">'f3'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+df<span class="token operator">=</span>pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'user_id'</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">'item_id'</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token number">34</span><span class="token punctuation">,</span><span class="token number">56</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 按列构造</span>
+df<span class="token operator">=</span>pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">'user_id'</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">'item_id'</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">'user_id'</span><span class="token punctuation">:</span><span class="token string">'3'</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">'item_id'</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#按行构造</span>
+</code></pre>
+<h1 id="导出数据"><a href="#导出数据" class="headerlink" title="导出数据"></a>导出数据</h1><pre class=" language-python"><code class="language-python">df<span class="token punctuation">.</span>to_csv<span class="token punctuation">(</span>filename<span class="token punctuation">,</span>index<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>sep<span class="token operator">=</span><span class="token string">','</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#导出数据到CSV文件</span>
+df<span class="token punctuation">.</span>to_excel<span class="token punctuation">(</span>filename<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#导出数据到Excel文件</span>
+df<span class="token punctuation">.</span>to_sql<span class="token punctuation">(</span>table_name<span class="token punctuation">,</span> db<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#导出数据到SQL表</span>
+df<span class="token punctuation">.</span>to_json<span class="token punctuation">(</span>filename<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#以Json格式导出数据到文本文件</span>
+</code></pre>
+<h1 id="查看数据"><a href="#查看数据" class="headerlink" title="查看数据"></a>查看数据</h1><pre class=" language-python"><code class="language-python">df<span class="token punctuation">.</span>head<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#查看DataFrame对象的前n行</span>
+df<span class="token punctuation">.</span>tail<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#查看DataFrame对象的最后n行</span>
+df<span class="token punctuation">.</span>shape<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#查看行数和列数</span>
+df<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#查看索引、数据类型和内存信息</span>
+df<span class="token punctuation">.</span>describe<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#查看数值型列的汇总统计</span>
+df<span class="token punctuation">[</span><span class="token string">'user_id'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>value_counts<span class="token punctuation">(</span>dropna<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#查看Series对象的唯一值和计数</span>
+</code></pre>
+<h1 id="数据选取"><a href="#数据选取" class="headerlink" title="数据选取"></a>数据选取</h1><pre class=" language-python"><code class="language-python">s<span class="token operator">=</span>df<span class="token punctuation">[</span><span class="token string">'user_id'</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true">#根据列名，并以Series的形式返回列</span>
+df<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'user_id'</span><span class="token punctuation">,</span> <span class="token string">'item_id'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true">#以DataFrame形式返回多列</span>
+s<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true">#按位置选取数据</span>
+s<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token string">'index_one'</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true">#按索引选取数据</span>
+df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true">#返回第一行</span>
+df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true">#返回第一列的第一个元素</span>
+df<span class="token punctuation">.</span>sample<span class="token punctuation">(</span>frac<span class="token operator">=</span><span class="token number">0.5</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">#采样</span>
+df<span class="token punctuation">.</span>sample<span class="token punctuation">(</span>n<span class="token operator">=</span>len<span class="token punctuation">(</span>df<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h1 id="数据整理"><a href="#数据整理" class="headerlink" title="数据整理"></a>数据整理</h1><pre class=" language-python"><code class="language-python">pd<span class="token punctuation">.</span>isnull<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#检查DataFrame对象中的空值，并返回一个Boolean数组</span>
+pd<span class="token punctuation">.</span>notnull<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#检查DataFrame对象中的非空值，并返回一个Boolean数组</span>
+df<span class="token punctuation">.</span>dropna<span class="token punctuation">(</span>axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#删除所有包含空值的行</span>
+df<span class="token punctuation">.</span>dropna<span class="token punctuation">(</span>axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#删除所有包含空值的列</span>
+df<span class="token punctuation">.</span>dropna<span class="token punctuation">(</span>axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>thresh<span class="token operator">=</span>n<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#删除所有小于n个非空值的行</span>
+df<span class="token punctuation">.</span>fillna<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#用x替换DataFrame对象中所有的空值</span>
+df<span class="token punctuation">.</span>fillna<span class="token punctuation">(</span>df<span class="token punctuation">.</span>mode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#众值填充</span>
+df<span class="token punctuation">.</span>fillna<span class="token punctuation">(</span>df<span class="token punctuation">.</span>median<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#中位数填充</span>
+df<span class="token punctuation">[</span><span class="token string">"user_age"</span><span class="token punctuation">]</span><span class="token punctuation">[</span>df<span class="token punctuation">.</span>age<span class="token punctuation">.</span>isnull<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"0"</span>  <span class="token comment" spellcheck="true">#对某一列填充</span>
+s<span class="token punctuation">.</span>astype<span class="token punctuation">(</span>float<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#将Series中的数据类型更改为float类型</span>
+df<span class="token punctuation">[</span><span class="token string">"user_age"</span><span class="token punctuation">]</span><span class="token operator">=</span>df<span class="token punctuation">[</span><span class="token string">"user_age"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>astype<span class="token punctuation">(</span><span class="token string">'int'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#更改某列类型</span>
+s<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">'one'</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#用‘one’代替所有等于1的值</span>
+s<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token string">'one'</span><span class="token punctuation">,</span><span class="token string">'three'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#用'one'代替1，用'three'代替3</span>
+df<span class="token punctuation">.</span>columns <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span><span class="token string">'b'</span><span class="token punctuation">,</span><span class="token string">'c'</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true">#重命名列名</span>
+df<span class="token punctuation">.</span>rename<span class="token punctuation">(</span>columns<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#批量更改列名</span>
+df<span class="token punctuation">.</span>rename<span class="token punctuation">(</span>index<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#批量重命名索引</span>
+df<span class="token punctuation">.</span>rename<span class="token punctuation">(</span>columns<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'old_name'</span><span class="token punctuation">:</span> <span class="token string">'new_ name'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#选择性更改列名</span>
+df<span class="token punctuation">.</span>set_index<span class="token punctuation">(</span><span class="token string">'column_one'</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#更改索引列</span>
+df<span class="token punctuation">.</span>reset_index<span class="token punctuation">(</span>drop<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#重置索引，主要用在各种操作之后，索引会被打乱</span>
+</code></pre>
+<h1 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h1><p>Filter 、Sort 和 GroupBy</p>
+<pre class=" language-python"><code class="language-python">df<span class="token punctuation">[</span>df<span class="token punctuation">[</span>col<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">0.5</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true">#选择col列的值大于0.5的行</span>
+df<span class="token punctuation">.</span>sort_values<span class="token punctuation">(</span>by<span class="token operator">=</span><span class="token string">'col1'</span><span class="token punctuation">,</span>ascending<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#按照列col1排序数据，默认升序排列</span>
+df<span class="token punctuation">.</span>sort_values<span class="token punctuation">(</span><span class="token punctuation">[</span>col1<span class="token punctuation">,</span>col2<span class="token punctuation">]</span><span class="token punctuation">,</span> ascending<span class="token operator">=</span><span class="token punctuation">[</span><span class="token boolean">True</span><span class="token punctuation">,</span><span class="token boolean">False</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#先按列col1升序排列，后按col2降序排列数据</span>
+df<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span>col<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#返回一个按列col进行分组的Groupby对象</span>
+df<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token punctuation">[</span>col1<span class="token punctuation">,</span>col2<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#返回一个按多列进行分组的Groupby对象</span>
+df<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span>col1<span class="token punctuation">)</span><span class="token punctuation">[</span>col2<span class="token punctuation">]</span><span class="token punctuation">.</span>apply<span class="token punctuation">(</span>np<span class="token punctuation">.</span>mean<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#返回按列col1进行分组后，列col2的均值</span>
+df<span class="token punctuation">.</span>pivot_table<span class="token punctuation">(</span>index<span class="token operator">=</span>col1<span class="token punctuation">,</span> values<span class="token operator">=</span><span class="token punctuation">[</span>col2<span class="token punctuation">,</span>col3<span class="token punctuation">]</span><span class="token punctuation">,</span> aggfunc<span class="token operator">=</span>max<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#创建一个按列col1进行分组，并计算col2和col3的最大值的数据透视表</span>
+df<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span>col1<span class="token punctuation">)</span><span class="token punctuation">.</span>agg<span class="token punctuation">(</span>np<span class="token punctuation">.</span>mean<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#返回按列col1分组的所有列的均值</span>
+df<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">'user_id'</span><span class="token punctuation">,</span>as_index<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">'is_trade'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>agg<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'buy'</span><span class="token punctuation">:</span><span class="token string">'sum'</span><span class="token punctuation">,</span><span class="token string">'click'</span><span class="token punctuation">:</span><span class="token string">'count'</span><span class="token punctuation">,</span><span class="token string">'cvr'</span><span class="token punctuation">:</span><span class="token string">'mean'</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#生成新的df，列是user_id,buy,click,cvr</span>
+
+<span class="token keyword">for</span> index<span class="token punctuation">,</span>row <span class="token keyword">in</span> df<span class="token punctuation">.</span>iterrows<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># index 是行号</span>
+    <span class="token comment" spellcheck="true"># row是一行</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span>row<span class="token punctuation">[</span><span class="token string">'user_id'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">break</span>
+    <span class="token keyword">pass</span>
+
+<span class="token keyword">for</span> key<span class="token punctuation">,</span>df <span class="token keyword">in</span> df<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">'user_gender_id'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># key 就是user_id</span>
+    <span class="token comment" spellcheck="true"># df就是分组后的dataframe</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span>len<span class="token punctuation">(</span>df<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">pass</span>
+
+df<span class="token punctuation">[</span><span class="token string">'user_id'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>apply<span class="token punctuation">(</span>np<span class="token punctuation">.</span>mean<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#对DataFrame中的每一列应用函数np.mean</span>
+df<span class="token punctuation">.</span>apply<span class="token punctuation">(</span>np<span class="token punctuation">.</span>max<span class="token punctuation">,</span>axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#对DataFrame中的每一行应用函数np.max</span>
+</code></pre>
+<h1 id="分组排序"><a href="#分组排序" class="headerlink" title="分组排序"></a>分组排序</h1><p>比如对shop分组，对组里面的item转化率分别排序</p>
+<pre class=" language-python"><code class="language-python">df<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">'shop_id'</span><span class="token punctuation">,</span>as_index<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">'item_cvr'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>rank<span class="token punctuation">(</span>ascending<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> method<span class="token operator">=</span><span class="token string">'dense'</span><span class="token punctuation">)</span>
+</code></pre>
+<h1 id="数据合并"><a href="#数据合并" class="headerlink" title="数据合并"></a>数据合并</h1><pre class=" language-python"><code class="language-python">df1<span class="token punctuation">.</span>append<span class="token punctuation">(</span>df2<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#将df2中的行添加到df1的尾部</span>
+pd<span class="token punctuation">.</span>concat<span class="token punctuation">(</span><span class="token punctuation">[</span>df1<span class="token punctuation">,</span> df2<span class="token punctuation">]</span><span class="token punctuation">,</span>axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#按列合并</span>
+pd<span class="token punctuation">.</span>concat<span class="token punctuation">(</span><span class="token punctuation">[</span>df1<span class="token punctuation">,</span>df2<span class="token punctuation">]</span><span class="token punctuation">,</span>axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#按行合并</span>
+pd<span class="token punctuation">.</span>merge<span class="token punctuation">(</span>df1<span class="token punctuation">,</span>df2<span class="token punctuation">,</span>on<span class="token operator">=</span><span class="token string">'user_id'</span><span class="token punctuation">,</span>how<span class="token operator">=</span><span class="token string">'inner'</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#对df1的列和df2的列执行SQL形式的join</span>
+</code></pre>
+<h1 id="差集计算"><a href="#差集计算" class="headerlink" title="差集计算"></a>差集计算</h1><pre class=" language-python"><code class="language-python">df1<span class="token operator">=</span>pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'user_id'</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">'item_id'</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">22</span><span class="token punctuation">,</span><span class="token number">33</span><span class="token punctuation">,</span><span class="token number">44</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+df2<span class="token operator">=</span>pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'user_id'</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+df2<span class="token punctuation">[</span><span class="token string">'flag'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span>
+df3<span class="token operator">=</span>pd<span class="token punctuation">.</span>merge<span class="token punctuation">(</span>df1<span class="token punctuation">,</span>df2<span class="token punctuation">,</span>on<span class="token operator">=</span><span class="token string">'user_id'</span><span class="token punctuation">,</span>how<span class="token operator">=</span><span class="token string">'left'</span><span class="token punctuation">)</span>
+df3<span class="token operator">=</span>df3<span class="token punctuation">[</span>df3<span class="token punctuation">.</span>flag<span class="token punctuation">.</span>isnull<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">.</span>drop<span class="token punctuation">(</span><span class="token string">'flag'</span><span class="token punctuation">,</span>axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+</code></pre>
+<h1 id="数据统计"><a href="#数据统计" class="headerlink" title="数据统计"></a>数据统计</h1><pre class=" language-python"><code class="language-python">df<span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#返回所有列的均值</span>
+df<span class="token punctuation">.</span>corr<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#返回所有列与列之间的相关系数</span>
+df<span class="token punctuation">.</span>item_star_level<span class="token punctuation">.</span>corr<span class="token punctuation">(</span>df<span class="token punctuation">.</span>is_trade<span class="token punctuation">)</span>
+df<span class="token punctuation">.</span>count<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#返回每一列中的非空值的个数</span>
+df<span class="token punctuation">.</span>max<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#返回每一列的最大值</span>
+df<span class="token punctuation">.</span>min<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#返回每一列的最小值</span>
+df<span class="token punctuation">.</span>median<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#返回每一列的中位数</span>
+df<span class="token punctuation">.</span>std<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#返回每一列的标准差</span>
+df<span class="token punctuation">.</span>dtypes <span class="token comment" spellcheck="true">#查看数据类型</span>
+df<span class="token punctuation">[</span><span class="token string">"user_age_level"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>hist<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#查看变量分布</span>
+df<span class="token punctuation">.</span>isnull<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>sum<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">#查看每一列缺失值情况</span>
+df<span class="token punctuation">[</span><span class="token string">'n_null'</span><span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">.</span>isnull<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>sum<span class="token punctuation">(</span>axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#查看每一行缺失值情况</span>
+df<span class="token punctuation">[</span><span class="token string">"user_age_level"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>value_counts<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#查看这一列的值统计</span>
+df<span class="token punctuation">[</span><span class="token string">'user_age_level'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>unique<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#查看数据取值</span>
+</code></pre>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
 
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
 </script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone, qq, weibo, douban"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>Reprint policy</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《pandas基础操作指南》
+                </span> by
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/09/15/pandas基础操作指南/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                baifengbai
+            </a> is licensed under a
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+                Creative Commons Attribution 4.0 International License
+            </a> 
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2018/11/13/nlp基础1-字符串操作/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="nlp基础-字符串操作">
+                        
+                        <span class="card-title">nlp基础-字符串操作</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            python字符串的基础操作
+
+去特殊符号
+s = 'hexo,baifengbai'
+print s.strip()
+print s.lstrip('hexo,')
+print s.rstrip('bai')
+
+hexo,baifengb
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-13
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/nlp/" class="post-category" target="_blank">
+                                    nlp
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/basic/" target="_blank">
+                        <span class="chip bg-color">basic</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/08/22/jupyter快捷键/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="jupyter 快捷键">
+                        
+                        <span class="card-title">jupyter 快捷键</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            jupyter 常用快捷键整理
+
+Enter : 转入编辑模式
+Shift-Enter : 运行本单元，选中下个单元
+Ctrl-Enter : 运行本单元
+Alt-Enter : 运行本单元，在其下插入新单元
+Y : 单元转入代码状态
+M 
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-08-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/jupyter/" class="post-category" target="_blank">
+                                    jupyter
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/skills/" target="_blank">
+                        <span class="chip bg-color">skills</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
 
 
 
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1,h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1,h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:xxx@xx.xx" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
 
 
 
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=123123123" class="tooltipped" data-tooltip="QQ联系我: 123123123" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
 
 
 
-  
+    <script src="/libs/others/clicklove.js"></script>
 
 
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-  
-  
-
-  
-
-  
-
-  
-
-  
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
 </body>

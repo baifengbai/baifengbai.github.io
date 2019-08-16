@@ -4,15 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="jupyter 快捷键, baifeng.name">
-    <meta name="description" content="jupyter 常用快捷键整理
-
-Enter : 转入编辑模式
-Shift-Enter : 运行本单元，选中下个单元
-Ctrl-Enter : 运行本单元
-Alt-Enter : 运行本单元，在其下插入新单元
-Y : 单元转入代码状态
-M ">
+    <meta name="keywords" content="python操作elasticsearch增删改查, baifeng.name">
+    <meta name="description" content="在python中操作elasticsearchElasticsearch 是一个开源的搜索引擎，建立在一个全文搜索引擎库 Apache Lucene™ 基础之上。接下来记录一下ElasticSearch的查询：
+创建index索引
+创建索引">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +15,7 @@ M ">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>jupyter 快捷键 | baifeng.name</title>
+    <title>python操作elasticsearch增删改查 | baifeng.name</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -267,13 +262,13 @@ M ">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        jupyter 快捷键
+                        python操作elasticsearch增删改查
                     </div>
                 </div>
             </div>
@@ -384,8 +379,8 @@ M ">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/skills/" target="_blank">
-                                <span class="chip bg-color">skills</span>
+                            <a href="/tags/bases/" target="_blank">
+                                <span class="chip bg-color">bases</span>
                             </a>
                         
                     </div>
@@ -396,8 +391,8 @@ M ">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/jupyter/" class="post-category" target="_blank">
-                                jupyter
+                            <a href="/categories/elasticsearch/" class="post-category" target="_blank">
+                                elasticsearch
                             </a>
                         
                     </div>
@@ -408,7 +403,7 @@ M ">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2018-08-22
+                    2019-08-16
                 </div>
 
                 
@@ -424,78 +419,292 @@ M ">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>jupyter 常用快捷键整理</p>
-<ul>
-<li><strong>Enter</strong> : 转入编辑模式</li>
-<li><strong>Shift-Enter</strong> : 运行本单元，选中下个单元</li>
-<li><strong>Ctrl-Enter</strong> : 运行本单元</li>
-<li><strong>Alt-Enter</strong> : 运行本单元，在其下插入新单元</li>
-<li><strong>Y</strong> : 单元转入代码状态</li>
-<li><strong>M</strong> :单元转入markdown状态</li>
-<li><strong>R</strong> : 单元转入raw状态<a id="more"></a> </li>
-<li><strong>1</strong> : 设定 1 级标题</li>
-<li><strong>2</strong> : 设定 2 级标题</li>
-<li><strong>3</strong> : 设定 3 级标题</li>
-<li><strong>4</strong> : 设定 4 级标题</li>
-<li><strong>5</strong> : 设定 5 级标题</li>
-<li><strong>6</strong> : 设定 6 级标题</li>
-<li><strong>Up</strong> : 选中上方单元</li>
-<li><strong>K</strong> : 选中上方单元</li>
-<li><strong>Down</strong> : 选中下方单元</li>
-<li><strong>J</strong> : 选中下方单元</li>
-<li><strong>Shift-K</strong> : 扩大选中上方单元</li>
-<li><strong>Shift-J</strong> : 扩大选中下方单元</li>
-<li><strong>A</strong> : 在上方插入新单元</li>
-<li><strong>B</strong> : 在下方插入新单元</li>
-<li><strong>X</strong> : 剪切选中的单元</li>
-<li><strong>C</strong> : 复制选中的单元</li>
-<li><strong>Shift-V</strong> : 粘贴到上方单元</li>
-<li><strong>V</strong> : 粘贴到下方单元</li>
-<li><strong>Z</strong> : 恢复删除的最后一个单元</li>
-<li><strong>D,D</strong> : 删除选中的单元</li>
-<li><strong>Shift-M</strong> : 合并选中的单元</li>
-<li><strong>Ctrl-S</strong> : 文件存盘</li>
-<li><strong>S</strong> : 文件存盘</li>
-<li><strong>L</strong> : 转换行号</li>
-<li><strong>O</strong> : 转换输出</li>
-<li><strong>Shift-O</strong> : 转换输出滚动</li>
-<li><strong>Esc</strong> : 关闭页面</li>
-<li><strong>Q</strong> : 关闭页面</li>
-<li><strong>H</strong> : 显示快捷键帮助</li>
-<li><strong>I,I</strong> : 中断Notebook内核</li>
-<li><strong>0,0</strong> : 重启Notebook内核</li>
-<li><strong>Shift</strong> : 忽略</li>
-<li><strong>Shift-Space</strong> : 向上滚动</li>
-<li><strong>Space</strong> : 向下滚动</li>
+                <p>在python中操作elasticsearch<br><a id="more"></a><br>Elasticsearch 是一个开源的搜索引擎，建立在一个全文搜索引擎库 Apache Lucene™ 基础之上。接下来记录一下ElasticSearch的查询：</p>
+<h2 id="创建index索引"><a href="#创建index索引" class="headerlink" title="创建index索引"></a>创建index索引</h2><ul>
+<li>创建索引，索引的名字是my-index,如果已经存在了，就返回个400，<br>这个索引可以现在创建，也可以在后面插入数据的时候再临时创建</li>
 </ul>
-<h3 id="编辑模式-Enter-键启动"><a href="#编辑模式-Enter-键启动" class="headerlink" title="编辑模式 ( Enter 键启动)"></a>编辑模式 ( Enter 键启动)</h3><ul>
-<li><strong>Tab</strong> : 代码补全或缩进</li>
-<li><strong>Shift-Tab</strong> : 提示</li>
-<li><strong>Ctrl-]</strong> : 缩进</li>
-<li><strong>Ctrl-[</strong> : 解除缩进</li>
-<li><strong>Ctrl-A</strong> : 全选</li>
-<li><strong>Ctrl-Z</strong> : 复原</li>
-<li><strong>Ctrl-Shift-Z</strong> : 再做</li>
-<li><strong>Ctrl-Y</strong> : 再做</li>
-<li><strong>Ctrl-Home</strong> : 跳到单元开头</li>
-<li><strong>Ctrl-Up</strong> : 跳到单元开头</li>
-<li><strong>Ctrl-End</strong> : 跳到单元末尾</li>
-<li><strong>Ctrl-Down</strong> : 跳到单元末尾</li>
-<li><strong>Ctrl-Left</strong> : 跳到左边一个字首</li>
-<li><strong>Ctrl-Right</strong> : 跳到右边一个字首</li>
-<li><strong>Ctrl-Backspace</strong> : 删除前面一个字</li>
-<li><strong>Ctrl-Delete</strong> : 删除后面一个字</li>
-<li><strong>Esc</strong> : 进入命令模式</li>
-<li><strong>Ctrl-M</strong> : 进入命令模式</li>
-<li><strong>Shift-Enter</strong> : 运行本单元，选中下一单元</li>
-<li><strong>Ctrl-Enter</strong> : 运行本单元</li>
-<li><strong>Alt-Enter</strong> : 运行本单元，在下面插入一单元</li>
-<li><strong>Ctrl-Shift–</strong> : 分割单元</li>
-<li><strong>Ctrl-Shift-Subtract</strong> : 分割单元</li>
-<li><strong>Ctrl-S</strong> : 文件存盘</li>
-<li><strong>Shift</strong> : 忽略</li>
-<li><strong>Up</strong> : 光标上移或转入上一单元</li>
-<li><strong>Down</strong> :光标下移或转入下一单元</li>
+<pre><code>es.indices.create(index=&#39;my-index&#39;,ignore)
+</code></pre><h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><ul>
+<li>插入数据,(这里省略插入其他两条数据，后面用)<pre><code>es.index(index=&quot;my-index&quot;,doc_type=&quot;test-type&quot;,id=01,body={&quot;any&quot;:&quot;data01&quot;,&quot;timestamp&quot;:datetime.now()})
+</code></pre></li>
+<li>get获取数据</li>
+<li>查询数据，两种get and search<br>get获取<pre><code>res = es.get(index=&quot;my-index&quot;, doc_type=&quot;test-type&quot;, id=01)
+es.get(index=&#39;indexName&#39;, doc_type=&#39;typeName&#39;, id=&#39;idValue&#39;)
+</code></pre></li>
+</ul>
+<h2 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h2><ul>
+<li>delete：删除指定index、type、id的文档<br><code>es.delete(index=&#39;indexName&#39;, doc_type=&#39;typeName&#39;, id=&#39;idValue&#39;)</code><br><code>`</code></li>
+<li>条件删除<pre><code>delete_by_query：删除满足条件的所有数据，查询条件必须符合DLS格式
+query = {&#39;query&#39;: {&#39;match&#39;: {&#39;sex&#39;: &#39;famale&#39;}}}-  删除性别为女性的所有文档
+query = {&#39;query&#39;: {&#39;range&#39;: {&#39;age&#39;: {&#39;lt&#39;: 11}}}}-  删除年龄小于11的所有文档
+</code></pre>es.delete_by_query(index=’indexName’, body=query, doc_type=’typeName’)<br><code>`</code></li>
+</ul>
+<h2 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h2><p>update_by_query：更新满足条件的所有数据，写法同上删除和查询</p>
+<ul>
+<li>批量写入、删除、更新<pre><code>doc = [
+   {&quot;index&quot;: {}},
+   {&#39;name&#39;: &#39;jackaaa&#39;, &#39;age&#39;: 2000, &#39;sex&#39;: &#39;female&#39;, &#39;address&#39;: u&#39;北京&#39;},
+   {&quot;index&quot;: {}},
+   {&#39;name&#39;: &#39;jackbbb&#39;, &#39;age&#39;: 3000, &#39;sex&#39;: &#39;male&#39;, &#39;address&#39;: u&#39;上海&#39;},
+   {&quot;index&quot;: {}},
+   {&#39;name&#39;: &#39;jackccc&#39;, &#39;age&#39;: 4000, &#39;sex&#39;: &#39;female&#39;, &#39;address&#39;: u&#39;广州&#39;},
+   {&quot;index&quot;: {}},
+   {&#39;name&#39;: &#39;jackddd&#39;, &#39;age&#39;: 1000, &#39;sex&#39;: &#39;male&#39;, &#39;address&#39;: u&#39;深圳&#39;},
+]
+doc = [
+  {&#39;index&#39;: {&#39;_index&#39;: &#39;indexName&#39;, &#39;_type&#39;: &#39;typeName&#39;, &#39;_id&#39;: &#39;idValue&#39;}}
+  {&#39;name&#39;: &#39;jack&#39;, &#39;sex&#39;: &#39;male&#39;, &#39;age&#39;: 10 }
+  {&#39;delete&#39;: {&#39;_index&#39;: &#39;indexName&#39;, &#39;_type&#39;: &#39;typeName&#39;, &#39;_id&#39;: &#39;idValue&#39;}}
+  {&quot;create&quot;: {&#39;_index&#39; : &#39;indexName&#39;, &quot;_type&quot; : &#39;typeName&#39;, &#39;_id&#39;: &#39;idValue&#39;}}
+  {&#39;name&#39;: &#39;lucy&#39;, &#39;sex&#39;: &#39;female&#39;, &#39;age&#39;: 20 }
+  {&#39;update&#39;: {&#39;_index&#39;: &#39;indexName&#39;, &#39;_type&#39;: &#39;typeName&#39;, &#39;_id&#39;: &#39;idValue&#39;}}
+  {&#39;doc&#39;: {&#39;age&#39;: &#39;100&#39;}}
+]
+es.bulk(index=&#39;indexName&#39;，  doc_type=&#39;typeName&#39;, body=doc)
+</code></pre><ul>
+<li>批量更新也可以采用如下的方式进行json拼装，最后写入</li>
+</ul>
+</li>
+</ul>
+<pre><code>            action = {
+                &quot;_index&quot;: self.index_name,
+                &quot;_type&quot;: self.index_type,
+                &quot;_id&quot;: i, - _id 也可以默认生成，不赋值
+                &quot;_source&quot;: {
+                    &quot;date&quot;: line[&#39;date&#39;],
+                    &quot;source&quot;: line[&#39;source&#39;].decode(&#39;utf8&#39;),
+                    &quot;link&quot;: line[&#39;link&#39;],
+                    &quot;keyword&quot;: line[&#39;keyword&#39;].decode(&#39;utf8&#39;),
+                    &quot;title&quot;: line[&#39;title&#39;].decode(&#39;utf8&#39;)}
+            }
+            i += 1
+            ACTIONS.append(action)
+success, _ = bulk(self.es, ACTIONS, index=self.index_name, raise_on_error=True)
+
+</code></pre><h2 id="查询所有数据"><a href="#查询所有数据" class="headerlink" title="查询所有数据"></a>查询所有数据</h2><ul>
+<li>搜索所有数据</li>
+</ul>
+<pre><code>es.search(index=&quot;my_index&quot;,doc_type=&quot;test_type&quot;)
+</code></pre><ul>
+<li>或者</li>
+</ul>
+<pre><code>body = {
+    &quot;query&quot;:{
+        &quot;match_all&quot;:{}
+    }
+}
+
+es.search(index=&quot;my_index&quot;,doc_type=&quot;test_type&quot;,body=body)
+</code></pre><ul>
+<li><p>term与terms</p>
+<ul>
+<li>term<pre><code>body = {
+&quot;query&quot;:{
+    &quot;term&quot;:{
+        &quot;name&quot;:&quot;python&quot;
+    }
+}
+}
+</code></pre></li>
+</ul>
+</li>
+<li><p>查询name=”python”的所有数据</p>
+</li>
+</ul>
+<pre><code>es.search(index=&quot;my_index&quot;,doc_type=&quot;test_type&quot;,body=body)
+</code></pre><ul>
+<li>terms</li>
+</ul>
+<pre><code>body = {
+    &quot;query&quot;:{
+        &quot;terms&quot;:{
+            &quot;name&quot;:[
+                &quot;python&quot;,&quot;android&quot;
+            ]
+        }
+    }
+}
+</code></pre><ul>
+<li>搜索出name=”python”或name=”android”的所有数据</li>
+</ul>
+<pre><code>es.search(index=&quot;my_index&quot;,doc_type=&quot;test_type&quot;,body=body)
+</code></pre><ul>
+<li><p>match与multi_match</p>
+<ul>
+<li>match:匹配name包含python关键字的数据<pre><code>body = {
+&quot;query&quot;:{
+  &quot;match&quot;:{
+      &quot;name&quot;:&quot;python&quot;
+  }
+}
+}
+</code></pre></li>
+</ul>
+</li>
+<li><p>查询name包含python关键字的数据</p>
+</li>
+</ul>
+<pre><code>es.search(index=&quot;my_index&quot;,doc_type=&quot;test_type&quot;,body=body)
+</code></pre><ul>
+<li>multi_match:在name和addr里匹配包含深圳关键字的数据<pre><code>body = {
+ &quot;query&quot;:{
+     &quot;multi_match&quot;:{
+         &quot;query&quot;:&quot;深圳&quot;,
+         &quot;fields&quot;:[&quot;name&quot;,&quot;addr&quot;]
+     }
+ }
+}
+</code></pre></li>
+<li>查询name和addr包含”深圳”关键字的数据<br><code>es.search(index=&quot;my_index&quot;,doc_type=&quot;test_type&quot;,body=body)</code></li>
+<li>ids<pre><code>body = {
+  &quot;query&quot;:{
+      &quot;ids&quot;:{
+          &quot;type&quot;:&quot;test_type&quot;,
+          &quot;values&quot;:[
+              &quot;1&quot;,&quot;2&quot;
+          ]
+      }
+  }
+}
+</code></pre></li>
+<li>搜索出id为1或2d的所有数据<br><code>es.search(index=&quot;my_index&quot;,doc_type=&quot;test_type&quot;,body=body)</code></li>
+<li>复合查询bool<br>bool有3类查询关系，must(都满足),should(其中一个满足),must_not(都不满足)<pre><code>body = {
+  &quot;query&quot;:{
+      &quot;bool&quot;:{
+          &quot;must&quot;:[
+              {
+                  &quot;term&quot;:{
+                      &quot;name&quot;:&quot;python&quot;
+                  }
+              },
+              {
+                  &quot;term&quot;:{
+                      &quot;age&quot;:18
+                  }
+              }
+          ]
+      }
+  }
+}
+</code></pre></li>
+<li>获取name=”python”并且age=18的所有数据<br><code>es.search(index=&quot;my_index&quot;,doc_type=&quot;test_type&quot;,body=body)</code></li>
+<li>切片式查询<pre><code>body = {
+  &quot;query&quot;:{
+      &quot;match_all&quot;:{}
+  }
+  &quot;from&quot;:2    -  从第二条数据开始
+  &quot;size&quot;:4    -  获取4条数据
+}
+</code></pre></li>
+<li>从第2条数据开始，获取4条数据<br><code>es.search(index=&quot;my_index&quot;,doc_type=&quot;test_type&quot;,body=body)</code></li>
+<li>范围查询<pre><code>body = {
+  &quot;query&quot;:{
+      &quot;range&quot;:{
+          &quot;age&quot;:{
+              &quot;gte&quot;:18,       -  &gt;=18
+              &quot;lte&quot;:30        -  &lt;=30
+          }
+      }
+  }
+}
+</code></pre></li>
+<li>查询18&lt;=age&lt;=30的所有数据<br><code>es.search(index=&quot;my_index&quot;,doc_type=&quot;test_type&quot;,body=body)</code></li>
+<li>前缀查询<pre><code>body = {
+  &quot;query&quot;:{
+      &quot;prefix&quot;:{
+          &quot;name&quot;:&quot;p&quot;
+      }
+  }
+}
+</code></pre></li>
+<li>查询前缀为”赵”的所有数据<br><code>es.search(index=&quot;my_index&quot;,doc_type=&quot;test_type&quot;,body=body)</code></li>
+<li>通配符查询<pre><code>body = {
+  &quot;query&quot;:{
+      &quot;wildcard&quot;:{
+          &quot;name&quot;:&quot;*id&quot;
+      }
+  }
+}
+</code></pre></li>
+<li>查询name以id为后缀的所有数据<br><code>es.search(index=&quot;my_index&quot;,doc_type=&quot;test_type&quot;,body=body)</code></li>
+<li>排序<pre><code>body = {
+  &quot;query&quot;:{
+      &quot;match_all&quot;:{}
+  }
+  &quot;sort&quot;:{
+      &quot;age&quot;:{                 -  根据age字段升序排序
+          &quot;order&quot;:&quot;asc&quot;       -  asc升序，desc降序
+      }
+  }
+}
+</code></pre></li>
+<li>filter_path<br>响应过滤</li>
+<li>只需要获取_id数据,多个条件用逗号隔开<br><code>es.search(index=&quot;my_index&quot;,doc_type=&quot;test_type&quot;,filter_path=[&quot;hits.hits._id&quot;])</code></li>
+<li>获取所有数据<br><code>es.search(index=&quot;my_index&quot;,doc_type=&quot;test_type&quot;,filter_path=[&quot;hits.hits._*&quot;])</code></li>
+<li>count<br>执行查询并获取该查询的匹配数</li>
+<li>获取数据量<br><code>es.count(index=&quot;my_index&quot;,doc_type=&quot;test_type&quot;)</code></li>
+<li>度量类聚合<br>获取最小值<pre><code>body = {
+  &quot;query&quot;:{
+      &quot;match_all&quot;:{}
+  },
+  &quot;aggs&quot;:{                        -  聚合查询
+      &quot;min_age&quot;:{                 -  最小值的key
+          &quot;min&quot;:{                 -  最小
+              &quot;field&quot;:&quot;age&quot;       -  查询&quot;age&quot;的最小值
+          }
+      }
+  }
+}
+</code></pre></li>
+<li>搜索所有数据，并获取age最小的值<br><code>es.search(index=&quot;my_index&quot;,doc_type=&quot;test_type&quot;,body=body)</code></li>
+</ul>
+<p>获取最大值</p>
+<pre><code>body = {
+    &quot;query&quot;:{
+        &quot;match_all&quot;:{}
+    },
+    &quot;aggs&quot;:{                        -  聚合查询
+        &quot;max_age&quot;:{                 -  最大值的key
+            &quot;max&quot;:{                 -  最大
+                &quot;field&quot;:&quot;age&quot;       -  查询&quot;age&quot;的最大值
+            }
+        }
+    }
+}
+</code></pre><ul>
+<li>搜索所有数据，并获取age最大的值<br><code>es.search(index=&quot;my_index&quot;,doc_type=&quot;test_type&quot;,body=body)</code></li>
+</ul>
+<p>获取和</p>
+<pre><code>body = {
+    &quot;query&quot;:{
+        &quot;match_all&quot;:{}
+    },
+    &quot;aggs&quot;:{                        -  聚合查询
+        &quot;sum_age&quot;:{                 -  和的key
+            &quot;sum&quot;:{                 -  和
+                &quot;field&quot;:&quot;age&quot;       -  获取所有age的和
+            }
+        }
+    }
+}
+</code></pre><ul>
+<li>搜索所有数据，并获取所有age的和<br><code>es.search(index=&quot;my_index&quot;,doc_type=&quot;test_type&quot;,body=body)</code></li>
+</ul>
+<p>获取平均值</p>
+<pre><code>body = {
+    &quot;query&quot;:{
+        &quot;match_all&quot;:{}
+    },
+    &quot;aggs&quot;:{                        -  聚合查询
+        &quot;avg_age&quot;:{                 -  平均值的key
+            &quot;sum&quot;:{                 -  平均值
+                &quot;field&quot;:&quot;age&quot;       -  获取所有age的平均值
+            }
+        }
+    }
+}
+</code></pre><ul>
+<li>搜索所有数据，获取所有age的平均值<br><code>es.search(index=&quot;my_index&quot;,doc_type=&quot;test_type&quot;,body=body)</code></li>
 </ul>
 
             </div>
@@ -655,9 +864,9 @@ M ">
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《jupyter 快捷键》
+                    《python操作elasticsearch增删改查》
                 </span> by
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/08/22/jupyter快捷键/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/16/python操作elasticsearch增删改查/" property="cc:attributionName"
                rel="cc:attributionURL">
                 baifengbai
             </a> is licensed under a
@@ -701,36 +910,37 @@ M ">
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2018/09/15/pandas基础操作指南/">
+                <a href="/2019/08/16/shiny学习笔记/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="pandas基础操作指南">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="shiny学习笔记">
                         
-                        <span class="card-title">pandas基础操作指南</span>
+                        <span class="card-title">shiny学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            pandas的常用数据操作，导入导出清洗分析计算，bryan大神整理
-import pandas as pd
-import numpy as np
-import pymysql
+                            shiny中的常用功能调用方法shiny各种小部件
+I. 介绍
 
-说明：df 任意的Pandas DataFrame对象s 任
+说说有哪些常用部件。
+- actionButton：动作按钮
+- checkboxGroupInput：复选框组，多选框，打钩的
+- checkboxInput：单个复选框，
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-15
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-16
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/pandas/" class="post-category" target="_blank">
-                                    pandas
+                            <a href="/categories/R/" class="post-category" target="_blank">
+                                    R
                                 </a>
                             
                             
@@ -740,8 +950,8 @@ import pymysql
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/skills/" target="_blank">
-                        <span class="chip bg-color">skills</span>
+                    <a href="/tags/shiny/" target="_blank">
+                        <span class="chip bg-color">shiny</span>
                     </a>
                     
                 </div>
@@ -755,31 +965,40 @@ import pymysql
                 Next&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/08/22/PEP8风格指南/">
+                <a href="/2019/08/16/postgresql无法正常启动/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="PEP 8风格指南">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="postgresql无法正常启动">
                         
-                        <span class="card-title">PEP 8风格指南</span>
+                        <span class="card-title">postgresql无法正常启动</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            PEP 8风格指南PEP是Python Enhancement Proposal的缩写，通常翻译为“Python增强提案”。每个PEP都是一份为Python社区提供的指导Python往更好的方向发展的技术文档，其中的第8号增提案即PEP 8
+                            解决postgresql无法正常启动的问题
+
+postgresql
+
+psql: could not connect to server: 没有那个文件或目录
+
+无效
+sudo service postgresql restart 
+
+使用
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-08-22
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-16
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/python/" class="post-category" target="_blank">
-                                    python
+                            <a href="/categories/database/" class="post-category" target="_blank">
+                                    database
                                 </a>
                             
                             
@@ -789,8 +1008,8 @@ import pymysql
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/skills/" target="_blank">
-                        <span class="chip bg-color">skills</span>
+                    <a href="/tags/bug/" target="_blank">
+                        <span class="chip bg-color">bug</span>
                     </a>
                     
                 </div>

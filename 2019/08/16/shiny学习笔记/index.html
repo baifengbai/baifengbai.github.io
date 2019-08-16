@@ -4,15 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="jupyter 快捷键, baifeng.name">
-    <meta name="description" content="jupyter 常用快捷键整理
+    <meta name="keywords" content="shiny学习笔记, baifeng.name">
+    <meta name="description" content="shiny中的常用功能调用方法shiny各种小部件
+I. 介绍
 
-Enter : 转入编辑模式
-Shift-Enter : 运行本单元，选中下个单元
-Ctrl-Enter : 运行本单元
-Alt-Enter : 运行本单元，在其下插入新单元
-Y : 单元转入代码状态
-M ">
+说说有哪些常用部件。
+- actionButton：动作按钮
+- checkboxGroupInput：复选框组，多选框，打钩的
+- checkboxInput：单个复选框，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +19,7 @@ M ">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>jupyter 快捷键 | baifeng.name</title>
+    <title>shiny学习笔记 | baifeng.name</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -267,13 +266,13 @@ M ">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        jupyter 快捷键
+                        shiny学习笔记
                     </div>
                 </div>
             </div>
@@ -384,8 +383,8 @@ M ">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/skills/" target="_blank">
-                                <span class="chip bg-color">skills</span>
+                            <a href="/tags/shiny/" target="_blank">
+                                <span class="chip bg-color">shiny</span>
                             </a>
                         
                     </div>
@@ -396,8 +395,8 @@ M ">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/jupyter/" class="post-category" target="_blank">
-                                jupyter
+                            <a href="/categories/R/" class="post-category" target="_blank">
+                                R
                             </a>
                         
                     </div>
@@ -408,7 +407,7 @@ M ">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2018-08-22
+                    2019-08-16
                 </div>
 
                 
@@ -424,80 +423,98 @@ M ">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>jupyter 常用快捷键整理</p>
-<ul>
-<li><strong>Enter</strong> : 转入编辑模式</li>
-<li><strong>Shift-Enter</strong> : 运行本单元，选中下个单元</li>
-<li><strong>Ctrl-Enter</strong> : 运行本单元</li>
-<li><strong>Alt-Enter</strong> : 运行本单元，在其下插入新单元</li>
-<li><strong>Y</strong> : 单元转入代码状态</li>
-<li><strong>M</strong> :单元转入markdown状态</li>
-<li><strong>R</strong> : 单元转入raw状态<a id="more"></a> </li>
-<li><strong>1</strong> : 设定 1 级标题</li>
-<li><strong>2</strong> : 设定 2 级标题</li>
-<li><strong>3</strong> : 设定 3 级标题</li>
-<li><strong>4</strong> : 设定 4 级标题</li>
-<li><strong>5</strong> : 设定 5 级标题</li>
-<li><strong>6</strong> : 设定 6 级标题</li>
-<li><strong>Up</strong> : 选中上方单元</li>
-<li><strong>K</strong> : 选中上方单元</li>
-<li><strong>Down</strong> : 选中下方单元</li>
-<li><strong>J</strong> : 选中下方单元</li>
-<li><strong>Shift-K</strong> : 扩大选中上方单元</li>
-<li><strong>Shift-J</strong> : 扩大选中下方单元</li>
-<li><strong>A</strong> : 在上方插入新单元</li>
-<li><strong>B</strong> : 在下方插入新单元</li>
-<li><strong>X</strong> : 剪切选中的单元</li>
-<li><strong>C</strong> : 复制选中的单元</li>
-<li><strong>Shift-V</strong> : 粘贴到上方单元</li>
-<li><strong>V</strong> : 粘贴到下方单元</li>
-<li><strong>Z</strong> : 恢复删除的最后一个单元</li>
-<li><strong>D,D</strong> : 删除选中的单元</li>
-<li><strong>Shift-M</strong> : 合并选中的单元</li>
-<li><strong>Ctrl-S</strong> : 文件存盘</li>
-<li><strong>S</strong> : 文件存盘</li>
-<li><strong>L</strong> : 转换行号</li>
-<li><strong>O</strong> : 转换输出</li>
-<li><strong>Shift-O</strong> : 转换输出滚动</li>
-<li><strong>Esc</strong> : 关闭页面</li>
-<li><strong>Q</strong> : 关闭页面</li>
-<li><strong>H</strong> : 显示快捷键帮助</li>
-<li><strong>I,I</strong> : 中断Notebook内核</li>
-<li><strong>0,0</strong> : 重启Notebook内核</li>
-<li><strong>Shift</strong> : 忽略</li>
-<li><strong>Shift-Space</strong> : 向上滚动</li>
-<li><strong>Space</strong> : 向下滚动</li>
-</ul>
-<h3 id="编辑模式-Enter-键启动"><a href="#编辑模式-Enter-键启动" class="headerlink" title="编辑模式 ( Enter 键启动)"></a>编辑模式 ( Enter 键启动)</h3><ul>
-<li><strong>Tab</strong> : 代码补全或缩进</li>
-<li><strong>Shift-Tab</strong> : 提示</li>
-<li><strong>Ctrl-]</strong> : 缩进</li>
-<li><strong>Ctrl-[</strong> : 解除缩进</li>
-<li><strong>Ctrl-A</strong> : 全选</li>
-<li><strong>Ctrl-Z</strong> : 复原</li>
-<li><strong>Ctrl-Shift-Z</strong> : 再做</li>
-<li><strong>Ctrl-Y</strong> : 再做</li>
-<li><strong>Ctrl-Home</strong> : 跳到单元开头</li>
-<li><strong>Ctrl-Up</strong> : 跳到单元开头</li>
-<li><strong>Ctrl-End</strong> : 跳到单元末尾</li>
-<li><strong>Ctrl-Down</strong> : 跳到单元末尾</li>
-<li><strong>Ctrl-Left</strong> : 跳到左边一个字首</li>
-<li><strong>Ctrl-Right</strong> : 跳到右边一个字首</li>
-<li><strong>Ctrl-Backspace</strong> : 删除前面一个字</li>
-<li><strong>Ctrl-Delete</strong> : 删除后面一个字</li>
-<li><strong>Esc</strong> : 进入命令模式</li>
-<li><strong>Ctrl-M</strong> : 进入命令模式</li>
-<li><strong>Shift-Enter</strong> : 运行本单元，选中下一单元</li>
-<li><strong>Ctrl-Enter</strong> : 运行本单元</li>
-<li><strong>Alt-Enter</strong> : 运行本单元，在下面插入一单元</li>
-<li><strong>Ctrl-Shift–</strong> : 分割单元</li>
-<li><strong>Ctrl-Shift-Subtract</strong> : 分割单元</li>
-<li><strong>Ctrl-S</strong> : 文件存盘</li>
-<li><strong>Shift</strong> : 忽略</li>
-<li><strong>Up</strong> : 光标上移或转入上一单元</li>
-<li><strong>Down</strong> :光标下移或转入下一单元</li>
-</ul>
+                <p>shiny中的常用功能调用方法<br><a id="more"></a><br>shiny各种小部件</p>
+<pre><code>I. 介绍
 
+说说有哪些常用部件。
+- actionButton：动作按钮
+- checkboxGroupInput：复选框组，多选框，打钩的
+- checkboxInput：单个复选框，单个打钩的
+- dateInput：日期选择控件
+- dateRangeInput：日期区间选择控件
+- fileInput：文件上传控件
+- helpText：帮助文档，类似word里面的文本框
+- numericInput：数值输入框
+- radioButtons：单选按钮，多个选项但只能选一个，打点的
+- selectInput：下拉选框，待选盒
+- sliderInput：滑动条
+- submitButton：提交按钮
+- textInput：文本输入框
+
+II. 使用方法
+小部件的函数中有很多选项，如函数column()也有多个参数。
+- column(width, ..., offset = 0)函数：第一个参数是部件宽度，整个页面共宽12(单位：column)；中间... 是加入的部件函数、部件显示的title等等；最后参数offset指部件向右偏倚多少column
+- 部件名称：一般是部件函数的第一个参数，我们不会看到，但是就相当于变量名一样，在之后的server.R中能够通过这个调用该部件的选择或输入结果
+- 部件标签（label）：会与部件一起显示，必须是string，但可为空
+- 寻求帮助：和所有函数一样使用?就能得到帮助，如?selectInput
+
+III. 示例
+以下为介绍的12个部件函数的使用：
+shinyUI(fluidPage(
+  titlePanel(&quot;Basic widgets&quot;),
+
+  fluidRow(                                                     # 第一行
+    column(3,                                                  # 第一个部件宽度为3 col
+           h3(&quot;Buttons&quot;),                                     # 显示部件title，有的在部件函数里面可以调用
+           actionButton(&quot;action&quot;, label=&quot;Action&quot;),  # 动作按钮，变量名为action，标签为Action
+           br(),                                                   # 空行
+           br(),
+           submitButton(&quot;Submit&quot;)),                     # 第二个按钮，提交按钮
+    column(3,
+           h3(&quot;Single check&quot;),                             # 部件title
+           checkboxInput(&quot;checkbox&quot;, label=&quot;Choice A&quot;, value=TRUE)),    
+           # 单个复选框：部件名称，标签，默认值TRUE=选定
+    column(3,
+           checkboxGroupInput(&quot;checkGroup&quot;,               # 复选框组：部件名称
+                              label=h3(&quot;Checkbox group&quot;),       # 部件标签
+                              choices=list(&quot;Choice 1&quot;=1,          # 选项1与对应取值1
+                                                &quot;Choice 2&quot;=2,          # 选项2与对应取值2
+                                                &quot;Choice 3&quot;=3),         # 选项3与对应取值3
+                              selected=1)),                             # 默认选项为选项1
+    column(3,
+           dateInput(&quot;date&quot;,                                           # 日期输入：名称date
+                     label=h3(&quot;Date input&quot;),
+                     value=&quot;2014-01-01&quot;))                           # 默认输入日期
+  ),
+  fluidRow(                                                                       # 第二行
+    column(3,
+           dateRangeInput(&quot;dates&quot;, label=h3(&quot;Date range&quot;))),   # 日期区间
+    column(3,
+           fileInput(&quot;file&quot;, label=h3(&quot;File input&quot;))),                    # 文件上传
+    column(3,
+           h3(&quot;Help text&quot;),                                                    # 部件title
+           helpText(&quot;Note: help text isn&#39;t a true widget,&quot;,        # helptext的内容，可分行
+                    &quot;but it provides an easy way to add text to&quot;,
+                    &quot;accompany other widgets.&quot;)),
+    column(3,
+           numericInput(&quot;num&quot;,                                             # 数值输入
+                        label=h3(&quot;Numeric input&quot;),                       # 部件title
+                        value=1))                                                # 默认值1
+  ),
+  fluidRow(                                                                      # 第三行
+    column(3,
+           radioButtons(&quot;radio&quot;, label=h3(&quot;Radio buttons&quot;),      # 单选框：名称和标签/title
+                        choices=list(&quot;Choice 1&quot;=1,                       # 三个选项与对应的取值
+                                          &quot;Choice 2&quot;=2,
+                                          &quot;Choice 3&quot;=3),
+                        selected=1)),                                          # 默认选项1
+    column(3,
+           h3(&quot;Select input&quot;),                                                # 部件title
+           selectInput(&quot;variable&quot;, &quot;Variable:&quot;,                         # 下拉框：名称，标签
+                       c(&quot;Cylinders&quot; = &quot;cyl&quot;,                               # 下拉的内容和对应的取值
+                         &quot;Transmission&quot; = &quot;am&quot;,
+                         &quot;Gears&quot; = &quot;gear&quot;))),
+    column(3,
+           sliderInput(&quot;slider1&quot;, label=h3(&quot;Sliders&quot;),               # 滑条：名称和标签title
+                       min=0, max=100, value=50),                   # 最大值，最小值和默认值
+           sliderInput(&quot;slider2&quot;, &quot;&quot;,                                       # 双向滑条：名称，无标签
+                       min=0, max=100, value=c(25, 75))),         # 最大值，最小值，默认区间值
+    column(3,
+           textInput(&quot;text&quot;, label=h3(&quot;Text input&quot;),                 # 文本输入框：名称和标签
+                     value=&quot;Enter text...&quot;))                               # 默认输入值
+  )
+))
+</code></pre>
             </div>
             <hr/>
 
@@ -655,9 +672,9 @@ M ">
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《jupyter 快捷键》
+                    《shiny学习笔记》
                 </span> by
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/08/22/jupyter快捷键/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/16/shiny学习笔记/" property="cc:attributionName"
                rel="cc:attributionURL">
                 baifengbai
             </a> is licensed under a
@@ -697,51 +714,54 @@ M ">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2018/09/15/pandas基础操作指南/">
+                <a href="/2019/08/16/shiny学习笔记/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="pandas基础操作指南">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="shiny学习笔记">
                         
-                        <span class="card-title">pandas基础操作指南</span>
+                        <span class="card-title">shiny学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            pandas的常用数据操作，导入导出清洗分析计算，bryan大神整理
-import pandas as pd
-import numpy as np
-import pymysql
+                            shiny中的常用功能调用方法shiny各种小部件
+I. 介绍
 
-说明：df 任意的Pandas DataFrame对象s 任
+说说有哪些常用部件。
+- actionButton：动作按钮
+- checkboxGroupInput：复选框组，多选框，打钩的
+- checkboxInput：单个复选框，
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/pandas/" class="post-category" target="_blank">
-                                    pandas
+                            <a href="/categories/R/" class="post-category" target="_blank">
+                                    R
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/skills/" target="_blank">
-                        <span class="chip bg-color">skills</span>
+                    <a href="/tags/shiny/" target="_blank">
+                        <span class="chip bg-color">shiny</span>
                     </a>
                     
                 </div>
@@ -755,31 +775,33 @@ import pymysql
                 Next&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/08/22/PEP8风格指南/">
+                <a href="/2019/08/16/python操作elasticsearch增删改查/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="PEP 8风格指南">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="python操作elasticsearch增删改查">
                         
-                        <span class="card-title">PEP 8风格指南</span>
+                        <span class="card-title">python操作elasticsearch增删改查</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            PEP 8风格指南PEP是Python Enhancement Proposal的缩写，通常翻译为“Python增强提案”。每个PEP都是一份为Python社区提供的指导Python往更好的方向发展的技术文档，其中的第8号增提案即PEP 8
+                            在python中操作elasticsearchElasticsearch 是一个开源的搜索引擎，建立在一个全文搜索引擎库 Apache Lucene™ 基础之上。接下来记录一下ElasticSearch的查询：
+创建index索引
+创建索引
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-08-22
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-16
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/python/" class="post-category" target="_blank">
-                                    python
+                            <a href="/categories/elasticsearch/" class="post-category" target="_blank">
+                                    elasticsearch
                                 </a>
                             
                             
@@ -789,8 +811,8 @@ import pymysql
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/skills/" target="_blank">
-                        <span class="chip bg-color">skills</span>
+                    <a href="/tags/bases/" target="_blank">
+                        <span class="chip bg-color">bases</span>
                     </a>
                     
                 </div>
